@@ -1,0 +1,46 @@
+# LHB ANSIBLE
+## Running Ad-Hoc commands
+
+## configuration
+
+Ansible default configuration file `/etc/ansible/ansible.cfg`
+
+There two important sections that you need to define in here:
+
+1. [defaults]
+> inventory - specifies the path of inventory file
+> remote_user - specifies user who will connect to managed nodes and run playbook
+> forks - Specifies the number of hosts can manage in parallel; default is 5
+> host_key_checking - specifies whether you want to turn on/off SSH host checking; default is True
+
+2. [privilege_escalation]
+> become - Activate privilege escalation, default is False
+> become_method - method to get privilege, default is sudo 
+> become_user - becoming user with high privilege, default is root
+> become_ask_pass - specifies whether ask or not ask for privilege password escalation
+
+## Syntax
+
+`ansible host_pattern -m command -a "argument of command"`
+
+Some of command useful:
+
+Documentation of command which you want to know
+`ansible-doc <command>`	
+
+List all ansible modules/command which supportted by ANSIBLE
+`ansible-doc -l`
+
+## Command vs. shell vs. raw modules
+
+There are three modules that people confuse with one other: command , shell, raw
+
+| Description | command | shell | raw |
+| :---        | :---:   | :---: | ---:|
+| Run simple commands | yes | yes | yes |
+| Run commands with redirections/pipe | no | yes | yes |
+| Run command without Python installed on managed node | no | no | yes |
+
+
+
+
