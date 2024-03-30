@@ -1,0 +1,11 @@
+---
+- name: first play
+  hosts: all
+  tasks:
+  - name: create a new file
+    file:
+      path: /tmp/foo.txt
+      mode: 0644
+      owner: cloud_user
+      state: touch
+      
