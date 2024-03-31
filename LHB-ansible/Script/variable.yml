@@ -1,0 +1,13 @@
+---
+- name: working with variable
+  hosts: all
+  vars:
+    fav_color: yellow
+  tasks:
+    - name: show color value
+      debug:
+        msg: My favorite color is {{ fav_color }}
+    
+    - name: show me second color which you like
+      debug:
+        msg: "{{ fav_color }}" also is my best color which i like!

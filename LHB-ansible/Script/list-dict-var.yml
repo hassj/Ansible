@@ -1,0 +1,30 @@
+---
+- name: working with variables
+  hosts: all
+  vars_file: var_example_file.yml
+  vars:
+    port_nums: [21,22,23,24]
+    port_nums_v2:
+      - 30
+      - 32
+      - 44
+    users:
+      bob:
+        username: bob
+        uid: 12
+        shell: /bin/bash
+      lisa:
+        username: lisa
+        uid: 13
+        shell: /bin/bash
+  tasks:
+    - name: show 2nd item in port nums
+      debug:
+        msg: SSH port is {{ port_nums[1] }}
+
+    - name: show uid of Bob and Lisa
+      debug:
+        msg: UID of Bob {{ users.bob.uid }} and Lisa {{ users.['lisa'].['uid'] }}
+    - name: show port number listed in var_example_file
+      debug:
+        msg: show item as normal like above task: {{ port_num[3]}

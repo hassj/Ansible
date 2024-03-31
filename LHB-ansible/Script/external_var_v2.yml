@@ -1,0 +1,11 @@
+---
+- name: working with variables
+  hosts: all
+#  vars_file: var_example_file.yml
+  tasks:
+    - name: load the variables
+        include_vars: var_example_file.yml
+        
+    - name: show port number listed in var_example_file
+      debug:
+        msg: show item as normal like above task: {{ port_num[3]}
