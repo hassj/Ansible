@@ -1,0 +1,8 @@
+---
+- name: Accessing facts in jinja2
+  hosts: node2
+  tasks:
+    - name: creating system info.txt file on managed node
+      template:
+        src: info.j2
+        dest: /tmp/info.txt

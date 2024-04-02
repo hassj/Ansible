@@ -5,6 +5,7 @@
     - name: check uptime system
       command: uptime
       notify: handler1
+      changed_when: false
     
     - name: Check date on system
       command: date

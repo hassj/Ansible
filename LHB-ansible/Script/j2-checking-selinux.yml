@@ -1,0 +1,13 @@
+---
+- name: Checking SELINUX status
+  hosts: all
+  tasks:
+    - name: Check selinux status
+      debug:
+        #msg: "{{ ansible_facts.selinux.status }} is status of selinux currently"
+        msg: "{{ ansible_facts['selinux']['status'] }} is status of selinux currently"
+    
+    - name: Creating selinux.out file on managed node
+      template:
+        src: j2-condition-selinux.j2
+        dest: /tmp/selinux.out

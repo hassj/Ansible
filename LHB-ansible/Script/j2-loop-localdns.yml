@@ -1,0 +1,8 @@
+---
+- name: update local dns
+  hosts: all
+  tasks:
+    - name: Update /etc/hosts using jinja2 template
+      template:
+        src: host.j2
+        dest: /etc/hosts

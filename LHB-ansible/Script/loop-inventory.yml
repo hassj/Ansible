@@ -7,3 +7,5 @@
       loop:  "{{ groups['all'] }}"
 
     - name: Ping specific hosts in inventory file
+      command: ping -c 2 {{ items }}
+      loop: "{{ groups['dbserver'] }}"

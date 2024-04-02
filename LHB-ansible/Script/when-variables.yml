@@ -9,4 +9,3 @@
       debug:
         msg: "You are free!"
       when: weekend and not oncall | bool
-      

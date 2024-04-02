@@ -1,0 +1,22 @@
+---
+- name: jinja2 example playbook
+  hosts: all
+  vars:
+    webserver_message: "I'm running to finish this line..."
+  tasks:
+    - name: Install and start apache
+      block:
+        - name: Install apache
+          package:
+            name: apache
+            state: present
+        
+        - name: Start apache
+          service:
+            name: apache2
+            state: started
+
+    - name: Create index.html using jinja2
+      template:
+        src: index.j2
+        dest: /var/www/html/index.html

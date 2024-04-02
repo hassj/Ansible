@@ -1,0 +1,14 @@
+---
+- name: Accessing variable in vault playbook
+  hosts: all
+  vars_files:
+    - web-server.yml
+    - db-server.yml
+  tasks:
+    - name: show secret value
+      debug:
+        msg: "{{ secret1 }}"
+    
+    - name: show secret value of key 2
+      debug:
+        msg: "{{ secret2 }}"
