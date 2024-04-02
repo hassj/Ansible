@@ -1,0 +1,20 @@
+---
+- name: handler first example
+  hosts: all
+  tasks:
+    - name: Create engineer group
+      group:
+        name: engineer
+      notify: add-alice
+
+    - name: second task
+      debug:
+        msg: " Im just another task"
+
+  handlers:
+    - name: add-alice
+      user:
+        name: alice
+        groups: engineer
+        append: yes
+

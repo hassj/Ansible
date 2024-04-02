@@ -1,0 +1,9 @@
+---
+- name: Using when statements playbook
+  hosts: all
+  tasks:
+    - name: Detect system OS
+      debug:
+        msg: This is Ubuntu server
+#      when: ansible_facts.distribution == 'Ubuntu'
+      when: ansible_facts['distribution'] == 'Ubuntu'

@@ -1,0 +1,18 @@
+---
+- name: Add multiple user
+  hosts: all
+  vars:
+    dbuser:
+      - username: j1
+        pass: pass1
+      - username: j2
+        pass: pass2
+      - username: j3
+        pass: pass3
+  
+  tasks:
+    - name: Add users
+      user:
+        name: "{{ item.username }}"
+        password: "{{ item.pass | password_hash('sha512') }}"
+      loop: "{{ dbuser }}"

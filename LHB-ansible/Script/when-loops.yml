@@ -1,0 +1,9 @@
+---
+- name: combine when and loops
+  hosts: all
+  tasks:
+    - name: print out even number in range 2-10
+      debug:
+        msg: Even number in range is {{ item }}
+      loop: "{{ range(2,10) | list }}"
+      when: item % 2 == 0

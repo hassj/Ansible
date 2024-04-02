@@ -1,0 +1,13 @@
+---
+- name: Range loop playbook
+  hosts: all
+  tasks:
+    - name: range loop
+      debug:
+        msg: "{{ items }}"
+      loop: "{{ range(10) | list }}"
+    
+    - name: range of specific number
+      debug:
+        msg: "{{ items }}"
+      loop: "{{ range(5,50,2) | list }}"

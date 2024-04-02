@@ -1,0 +1,9 @@
+---
+- name: Multiple condition and when
+  hosts: all
+  tasks:
+    - name: Reboot Ubuntu server
+      reboot:
+        msg: Rebooting server Ubuntu
+      #when: ansible_facts.distribution == "Ubuntu" and ansible_facts.distribution_major_version == 20
+      when: ansible_facts.distribution == "Centos" or ansible_facts.distribution_major_version == "Redhat"

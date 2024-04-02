@@ -1,0 +1,15 @@
+---
+- name: control change
+  hosts: all
+  tasks:
+    - name: check uptime system
+      command: uptime
+      notify: handler1
+    
+    - name: Check date on system
+      command: date
+  
+  handlers:
+      - name: handler1
+        debug:
+          msg: " I can handle uptime"

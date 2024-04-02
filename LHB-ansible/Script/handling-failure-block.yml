@@ -1,0 +1,21 @@
+---
+- name: Handling Error playbook
+  hosts: all
+  tasks:
+    - name: Handling error example
+      block:
+        - name: run a command
+          command: uptime
+        - name: run a bad command
+          command: blabla
+        - name: This task will not run
+          debug:
+            msg: "this task will not run since above task failed"        
+      rescue:
+        - name: Run when block fail
+          debug:
+            msg: "Block failed, let's to fix it here ..."
+      always:
+        - name: This will always run
+          debug:
+            msg: "Whether the blocks has failed or not... I will always run"

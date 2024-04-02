@@ -1,0 +1,12 @@
+---
+- name: Using when condition with register
+  hosts: all
+  tasks:
+    - name: save the content
+      command: cat /etc/os-release
+      register: os-release
+      
+    - name: Detect system os
+      debug:
+        msg: "Running Centos ..."
+      when: os-release.stdout.find('CentOS') != -1
